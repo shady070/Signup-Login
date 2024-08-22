@@ -1,39 +1,15 @@
-'use client'
-import { useState } from 'react';
+import Link from 'next/link'
+import React from 'react'
 
-export default function SignupForm() {
-  const [formData, setFormData] = useState({
-    username: '',
-    password: ''
-  });
-
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Handle form submission, e.g., make an API call
-    console.log(formData);
-  };
-
+const page = () => {
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="username"
-        value={formData.username}
-        onChange={handleChange}
-        placeholder="Username"
-      />
-      <input
-        type="password"
-        name="password"
-        value={formData.password}
-        onChange={handleChange}
-        placeholder="Password"
-      />
-      <button type="submit">Signup</button>
-    </form>
-  );
+    <main className='flex items-center justify-center flex-col min-h-screen '>
+      <Link href='/login'>
+        <button className='bg-black text-white md:px-[200px] px-[100px] py-[20px] rounded-md'>Login</button>
+      </Link>
+      <Link className='pt-[10px]' href='/signup'>Dont have an Account? <span className='text-[blue] underline'>Signup</span></Link>
+    </main>
+  )
 }
+
+export default page
